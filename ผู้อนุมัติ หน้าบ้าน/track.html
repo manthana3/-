@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Request Status</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+        }
+        .header {
+            background-color: #2d78bf;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header .title {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .header .title img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .header .title div {
+            line-height: 1.2;
+        }
+        .header .title div .sub-title {
+            font-size: 12px;
+            font-weight: normal;
+        }
+        .header .datetime {
+            text-align: right;
+        }
+        .header .datetime div {
+            margin: 0;
+        }
+        .header .datetime .date {
+            font-size: 14px;
+        }
+        .header .datetime .time {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .nav {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav a {
+            text-decoration: none;
+            color: #333333;
+            font-size: 14px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav a.logout {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .nav a.logout:hover {
+            color: #c0392b;
+        }
+        .nav a:hover {
+            background-color: #f0f4f7;
+            color: #007acc;
+            border-radius: 4px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 2px solid;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card-issue {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+        .card-borrow {
+            border-color: #27ae60;
+            color: #27ae60;
+        }
+    </style>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const date = now.toLocaleDateString('th-TH', options);
+            const time = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('date').textContent = date;
+            document.getElementById('time').textContent = time;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+</head>
+<body onload="updateTime()">
+    <div class="header">
+        <div class="title">
+            <img src="logo.png" alt="Logo">
+            <div>
+                SPORTS AUTHORITY OF THAILAND
+                <div class="sub-title">Computer Equipment Management System</div>
+            </div>
+        </div>
+        <div class="datetime">
+            <div id="date" class="date"></div>
+            <div id="time" class="time"></div>
+        </div>
+    </div>
+    <div class="nav">
+        <a href="borrow.html">ยืมวัสดุ</a>
+        <a href="returnเบิก.html">เบิกวัสดุ</a>
+        <a href="track.html">ติดตามสถานะการเบิก</a>
+        <a href="ประวัติการเบิกยืม.html" style="color: rgb(0, 0, 0);">ประวัติการเบิกคืน</a>
+        <a href="change_password.html">แก้ไขรหัสผ่าน</a>
+        <a href="edit_profile.html">แก้ไขโปรไฟล์</a>
+        <a href="#" class="logout">&#10140; Log out</a>
+    </div>
+    <div class="content">
+        <h2>ติดตามสถานะคำขอ</h2>
+        <div class="card-container">
+            <a href="สถานะคำขอเบิก.html" class="card card-issue">ติดตามสถานะคำขอเบิก</a>
+            <a href="สถานะคำขอยืมคืน.html" class="card card-borrow">ติดตามสถานะคำขอยืม</a>
+        </div>
+    </div>
+</body>
+</html>
